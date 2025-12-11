@@ -1,0 +1,8 @@
+# Ignore commitlint executable
+tools/commitlint*
+
+# Ignore session.txt
+session.txt
+
+# Ignore .direnv folder
+.direnv/

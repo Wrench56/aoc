@@ -1,0 +1,3 @@
+[submodule "aockit"]
+	path = aockit
+	url = https://github.com/Wrench56/aoc-kit
