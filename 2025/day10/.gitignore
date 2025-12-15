@@ -1,0 +1,8 @@
+# Ignore build artifacts
+build/
+
+# Ignore input, output, prompt, and session cookie
+input.txt
+output.txt
+session.txt
+prompt.txt
