@@ -58,15 +58,15 @@ parse:
     xor             edx, edx
     xor             esi, esi
     xor             edi, edi
+
 .lightloop:
-    xor             eax, eax
-    cmp             byte [rbp], ']'
+    mov             al, [rbp]
+    cmp             al, ']'
     je              .buttongrouploop_pre
-    cmp             byte [rbp], '#'
-    sete            al
-    mov             rcx, rsi
-    shl             rax, cl
-    or              rdx, rax
+    cmp             al, '#'
+    jne             .lightloop_next
+    bts             rdx, rsi
+.lightloop_next:
     inc             rsi
     inc             rbp
     jmp             .lightloop
@@ -83,13 +83,13 @@ parse:
     ; Skip parentheses
     inc             rbp
     inc             rdi
-
-.connectionloop:
-    mov             al, byte [rbp]
-    sub             al, 48
-    ; Store button connection
     imul            r8, rdi, MAX_BUTTONS * BUTTON_WIDTH
     add             r8, rsp
+
+.connectionloop:
+    movzx           eax, byte [rbp]
+    sub             al, '0'
+    ; Store button connection
     mov             byte [r8 + rcx * BUTTON_WIDTH], al
     inc             rcx
     add             rbp, 2
