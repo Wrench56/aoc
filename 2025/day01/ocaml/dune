@@ -1,0 +1,4 @@
+(executable
+ (name main)
+ (modules main solution)
+ (libraries unix base))
